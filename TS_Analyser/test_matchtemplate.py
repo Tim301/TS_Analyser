@@ -23,7 +23,7 @@ while(cap.isOpened()):
     x=x+1
     if ret == True and x<=150: #limite search window to 150 frames
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        tmp = tools.matchtemplate(frame,template)
+        tmp = tools.match_template(frame,template)
         matrix.append(tmp)
     else:
         break

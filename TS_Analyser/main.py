@@ -10,7 +10,7 @@ __name='__main__'
 
 import os
 from tkinter import *
-from TS_Class import *
+from Interface import *
 
 def ask_quit():
     root.destroy()

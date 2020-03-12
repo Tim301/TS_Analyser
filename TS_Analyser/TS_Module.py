@@ -74,8 +74,18 @@ def match_template(img,template):
     res = cv2.matchTemplate(img,template,0)
     return(res[0][0]) #return SQDIFF score
 
+def ts_id(json,nb):
+    tsid=[]
+    try:
+        for i in range(nb):
+            tsid.append(json['programs'][i]['program_id'])
+        return tsid
+    except:
+        return tsid
+
 def tsExtract(pathin, pathout, mapindex):
-    subprocess.run(['ffmpeg', '-i', pathin, '-c:v', 'copy', '-map', mapindex, output])
+    index= "0:" + str(mapindex)
+    subprocess.run(['ffmpeg', '-y', '-nostats', '-loglevel', '0','-i', pathin, '-c:v', 'copy', '-map', index, pathout])
     
 def mapinfo(ts_info):
     mapIndex=[]
