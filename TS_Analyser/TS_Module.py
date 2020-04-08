@@ -99,6 +99,8 @@ def mapinfo(ts_info):
                 mapIndex.append(ts_info['programs'][i]['streams'][k]['index'])
             elif (k==len(ts_info['programs'][i]['streams'])):
                 mapIndex.append('NoVideo')
+        if not mapIndex:
+            mapIndex.append(4)
         return mapIndex
     except:
         mapIndex = 'Error'

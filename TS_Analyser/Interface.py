@@ -3,6 +3,7 @@ from tkinter import filedialog
 from tkinter import *
 from MPTS import MPTS
 import TS_Module as tools
+from TS_Matchtemplate import gap_finder
 
 ts_folder = "/tmp/ts/"
 
@@ -54,10 +55,16 @@ class Interface(Frame):
 
     def start(self):
         print('Extraction in Ref progress...')
-        pathout = ts_folder + self.ref.name[:-3] + "ts"
-        tools.tsExtract(self.ref.path, pathout, self.ref.map[0])
+        pathoutref = ts_folder + self.ref.name[:-3] + "ts"
+        tools.tsExtract(self.ref.path, pathoutref, self.ref.map[0])
         print('Extraction Ref done')
         print('Extraction in Src progress...')
-        pathout = ts_folder + self.src.name[:-3] + "ts"
-        tools.tsExtract(self.src.path, pathout, self.src.map[0])
+        pathoutsrc = ts_folder + self.src.name[:-3] + "ts"
+        tools.tsExtract(self.src.path, pathoutsrc, self.src.map[0])
         print('Extraction Src done')
+        print('Research delay')
+        #research similiraty in a window of 5s
+        gap_finder(pathoutref, pathoutsrc, 5)
+        print('Research done')
+        
+        

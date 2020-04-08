@@ -3,6 +3,7 @@ import time
 import numpy as np
 import TS_Module as tools
 
+
 template = cv2.imread('/home/moi/Images/vlcsnap-2020-03-05-15h03m19s964.png')#read ref frame
 template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY) #convert frame in grayscale
 
